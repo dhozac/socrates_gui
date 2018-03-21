@@ -1,0 +1,48 @@
+.rackspace_asset {
+    background: #000000;
+    border: 1px solid black;
+}
+.rackspace_rack {
+    background: #E0DFDD;
+}
+.rackspace_rack th {
+    text-align: center;
+    width: 4em;
+}
+.rackspace_server {
+    background: #6BC7EC;
+}
+.rackspace_network {
+    background: #37C035;
+}
+.rackspace_storage {
+    background: #AF9F51;
+}
+.rackspace_misc {
+    background: #EC8284;
+}
+.rackspace_blade-chassis {
+    background: #9F4EB4;
+}
+.rackspace_label {
+    color: black;
+}
+html {
+    overflow: hidden;
+    height: 100%;
+}
+body {
+    overflow: auto;
+    height: 100%;
+}
+.modal-open {
+    overflow: auto;
+}
+table {
+    table-layout: fixed;
+    width: 400px;
+}
+td {
+    overflow: hidden;
+    white-space: nowrap;
+}

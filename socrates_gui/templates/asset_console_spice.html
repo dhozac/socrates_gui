@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+{% load pipeline %}
+<html>
+    <head>
+        <title>{{ object.provision.hostname|default:object.service_tag }} console</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/spice.css' %}" />
+        {% javascript "spice_html5_js" %}
+    </head>
+    <body>
+        <div id="spice-area">
+            <div id="spice-screen" class="spice-screen"></div>
+        </div>
+        <div id="message-div" class="spice-message"></div>
+        <script type="text/javascript">
+            spice_connect("{{ object.id }}", "spice-screen");
+        </script>
+    </body>
+</html>

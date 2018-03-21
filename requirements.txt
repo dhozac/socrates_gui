@@ -1,0 +1,4 @@
+websockify
+socrates_api
+django-pipeline
+django-pipeline-browserify

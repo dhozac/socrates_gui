@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html{% if request.LANGUAGE_CODE %} lang="{{ request.LANGUAGE_CODE }}"{% endif %}>
+
+{% load pipeline %}
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Socrates</title>
+    {% stylesheet 'socrates_css' %}
+</head>
+
+<body>
+<div id="socrates_app" class="container"></div>
+{% javascript "socrates_js" %}
+</body>
+
+</html>
