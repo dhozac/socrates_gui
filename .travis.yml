@@ -11,8 +11,8 @@ before_script:
 - sudo cp /etc/rethinkdb/default.conf.sample /etc/rethinkdb/instances.d/instance1.conf
 - sudo invoke-rc.d rethinkdb start
 # Install Firefox and geckodriver
-- 'wget "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"'
-- tar -xjf firefox*.tar.bz2
+- 'wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"'
+- tar -xjf firefox.tar.bz2
 - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
 - tar -xzf geckodriver-v0.20.0-linux64.tar.gz
 # Install node
