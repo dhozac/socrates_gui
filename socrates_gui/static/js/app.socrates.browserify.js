@@ -36,8 +36,6 @@ import {
   fetchAddresses, fetchZones, fetchRecords, fetchNetworks, fetchReviews
 } from './actions.js';
 
-import './SocratesApp.css';
-
 class HomeView extends React.Component {
   render() {
     return (
