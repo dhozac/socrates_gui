@@ -23,7 +23,11 @@ before_script:
 - export PATH=$PATH:$PWD/node_modules/.bin:$PWD/firefox:$PWD
 env:
 - HANDLE_COVERAGE=coveralls
-script: xvfb-run -a tox
+script:
+- if ! xvfb-run -a tox; then
+    cat geckodriver.log
+    exit 1
+  fi
 deploy:
   provider: pypi
   username: dhozac
