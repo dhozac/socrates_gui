@@ -20,7 +20,9 @@ before_script:
 - sudo apt install -y nodejs xvfb
 # Install JS dependencies
 - npm install
-- export PATH=$PATH:$PWD/node_modules/.bin:$PWD/firefox:$PWD
+- export PATH=$PWD/node_modules/.bin:$PWD/firefox:$PWD:$PATH
+- export XDG_RUNTIME_DIR=$PWD/.xdg
+- mkdir $PWD/.xdg
 env:
 - HANDLE_COVERAGE=coveralls
 script: xvfb-run -a tox
