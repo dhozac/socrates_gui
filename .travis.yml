@@ -25,8 +25,8 @@ env:
 - HANDLE_COVERAGE=coveralls
 script:
 - if ! xvfb-run -a tox; then
-    cat geckodriver.log
-    exit 1
+    cat geckodriver.log;
+    exit 1;
   fi
 deploy:
   provider: pypi
