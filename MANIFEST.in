@@ -1,3 +1,4 @@
-include requirements.txt
+include *.txt *.md setup.py
+include socrates_gui/package.json
 recursive-include socrates_gui/templates *
 recursive-include socrates_gui/static *
