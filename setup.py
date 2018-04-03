@@ -12,7 +12,12 @@ setup(name='socrates_gui',
       author_email='daniel.zakrisson@klarna.com',
       url='https://github.com/dhozac/socrates_gui',
       packages=['socrates_gui'],
-      install_requires=map(lambda x: re.sub(r".*#egg=(.*)", lambda m: m.group(1), x.strip()), open(os.path.join(os.path.dirname(__file__), 'requirements.txt')).readlines()),
+      install_requires=[
+          'websockify',
+          'socrates_api',
+          'django-pipeline',
+          'django-pipeline-browserify',
+      ],
       include_package_data=True,
       zip_safe=False,
       classifiers=[
