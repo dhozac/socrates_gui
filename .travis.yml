@@ -19,8 +19,8 @@ before_script:
 - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 - sudo apt install -y nodejs xvfb
 # Install JS dependencies
-- npm install
-- export PATH=$PWD/node_modules/.bin:$PWD:$PATH
+- "(cd socrates_gui && npm install)"
+- export PATH=$PWD/socrates_gui/node_modules/.bin:$PWD:$PATH
 - export XDG_RUNTIME_DIR=$PWD/.xdg
 - mkdir $PWD/.xdg
 env:
