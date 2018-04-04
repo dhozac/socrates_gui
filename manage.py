@@ -32,4 +32,11 @@ if __name__ == "__main__":
                 "forget to activate a virtual environment?"
             )
         raise
+
+    if len(sys.argv) > 1 and sys.argv[1] == "collectstatic":
+        # This is to get around keeping the package.json for npm in
+        # the package. node_modules will exist in the package as
+        # well, so that needs to be the current working directory.
+        os.chdir(os.path.join(os.path.dirname(__file__), "socrates_gui"))
+
     execute_from_command_line(sys.argv)
