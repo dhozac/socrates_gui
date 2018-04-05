@@ -37,7 +37,7 @@ if __name__ == "__main__":
         # This is to get around keeping the package.json for npm in
         # the package. node_modules will exist in the package as
         # well, so that needs to be the current working directory.
+        os.environ["NODE_PATH"] = os.path.abspath(os.path.join(os.path.dirname(__file__), "socrates_gui", "node_modules"))
         os.chdir(os.path.join(os.path.dirname(__file__), "socrates_gui"))
-        os.environ["NODE_PATH"] = os.path.join(os.path.dirname(__file__), "socrates_gui", "node_modules")
 
     execute_from_command_line(sys.argv)
