@@ -39,7 +39,7 @@ export class AssetView extends React.Component {
             this.setState({key: key});
     }
     componentDidMount() {
-        if (typeof this.asset !== "undefined")
+        if (typeof this.asset !== "undefined" && this.asset.hasOwnProperty('oob'))
             fetchAPI({url: "/asset/" + encodeURIComponent(this.asset.id) + "/ipmi/"})
               .then((power) => this.setState({power: power ? power['power_state'] : "Unknown"}));
     }
