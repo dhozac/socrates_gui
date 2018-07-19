@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 STATICFILES_FINDERS = (
@@ -19,6 +21,10 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'pipeline.finders.PipelineFinder',
 )
+
+STATICFILES_DIRS = [
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'node_modules', 'bootstrap', 'dist'),
+]
 
 PIPELINE_COMPILERS = (
     'pipeline_browserify.compiler.BrowserifyCompiler',
@@ -32,7 +38,6 @@ PIPELINE_BROWSERIFY_ARGUMENTS = '-t [ babelify --presets [ es2015 react ] ]'
 PIPELINE_CSS = {
     'socrates_css': {
         'source_filenames': (
-            'node_modules/bootstrap/dist/css/bootstrap.min.css',
             'css/style.css',
         ),
         'output_filename': 'css/socrates.css',
