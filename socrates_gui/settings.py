@@ -23,7 +23,7 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_DIRS = [
-    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'node_modules', 'bootstrap', 'dist'),
+    os.path.join(os.path.dirname(__file__), 'node_modules', 'bootstrap', 'dist'),
 ]
 
 PIPELINE_COMPILERS = (
