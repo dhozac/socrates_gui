@@ -71,7 +71,7 @@ class BaseView extends React.Component {
     menu.push(<li key="menu_stats"><Link to="/gui/stats">Stats</Link></li>);
     menu.push(<li key="menu_bonk"><Link to="/gui/bonk">Bonk</Link></li>);
     var menu_right = [
-      (<li key="menu_right_refresh"><button onClick={this.onRefresh.bind(this)}>Refresh</button></li>),
+      (<li key="menu_right_refresh"><a href="#" onClick={this.onRefresh.bind(this)}>Refresh</a></li>),
     ];
     return (
       <div>
