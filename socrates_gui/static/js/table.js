@@ -110,7 +110,7 @@ export default class ReactTable extends React.Component {
     });
 
     if (query.hasOwnProperty("p"))
-      this.state.page = parseInt(query.p, 10);
+      this.state.page = parseInt(query.p, 10) - 1;
     if (query.hasOwnProperty("s"))
       this.state.filtering = query.s;
     if (query.hasOwnProperty("o"))
