@@ -130,7 +130,7 @@ export default class BonkView extends React.Component {
                             key = "z-" + this.props.zones[i].name;
                             results.push(<li key={key}>
                                 <BonkObject objects={[this.props.zones[i]]}>
-                                    Zone {this.props.zone.name}
+                                    Zone {this.props.zones[i].name}
                                 </BonkObject>
                             </li>);
                         }
