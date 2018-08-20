@@ -19,6 +19,7 @@
 import React from 'react';
 import { Tabs, Tab, FormGroup, InputGroup, FormControl, DropdownButton, MenuItem, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import filesize from 'filesize';
 import ReactDiff from './diff.js';
 import ReactTable from './table.js';
 import { fetchAPI } from './actions.js';
@@ -58,14 +59,41 @@ export class AssetView extends React.Component {
             else
                 return (<div></div>);
         }
-        else
+        else {
+            var data = [
+                (<div class="row" key="service_tag">
+                    <div class="col-sm-4">Service tag</div>
+                    <div class="col-sm-8">{this.asset.service_tag}</div>
+                </div>)
+            ];
+            if (this.asset.asset_type === "server" || this.asset.asset_type === "vm") {
+                data.push(
+                    <div class="row" key="power">
+                        <div class="col-sm-4">Power state</div>
+                        <div class="col-sm-8">{this.state.power}</div>
+                    </div>
+                );
+                if (typeof this.asset.cpu !== "undefined")
+                    data.push(
+                        <div class="row" key="cpus">
+                            <div class="col-sm-4">CPU(s)</div>
+                            <div class="col-sm-8">{this.asset.cpu.length} x {this.asset.cpu[0]}</div>
+                        </div>
+                    );
+                if (typeof this.asset.ram !== "undefined")
+                    data.push(
+                        <div class="row" key="ram">
+                            <div class="col-sm-4">RAM</div>
+                            <div class="col-sm-8">{filesize(this.asset.ram.total)}</div>
+                        </div>
+                    );
+            }
             return (
                 <Tabs id="asset_tabs" activeKey={this.state.key} onSelect={this.handleSelect.bind(this)}>
                     <Tab eventKey="back" title="&larr; Back"></Tab>
                     <Tab eventKey="data" title="Data">
-                        <p>Service tag: {this.asset.service_tag}</p>
-                        <p>Power state: {this.state.power}</p>
-                        <p>only here for debug</p>
+                        {data}
+                        <p>Complete asset:</p>
                         <pre>{JSON.stringify(this.asset, null, 2)}</pre>
                     </Tab>
                     <Tab eventKey="ipmi" title="Actions">
@@ -91,6 +119,7 @@ export class AssetView extends React.Component {
                     </Tab>
                 </Tabs>
             );
+        }
     }
 }
 
