@@ -2,3 +2,6 @@ include *.txt *.md setup.py
 include socrates_gui/package.json
 recursive-include socrates_gui/templates *
 recursive-include socrates_gui/static *
+recursive-include react *
+prune react/node_modules
+prune react/build

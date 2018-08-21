@@ -23,6 +23,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { connect, Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
+import './SocratesApp.css';
 import socratesApp from './reducers.js';
 import QuotasView from './quotas.js';
 import { AssetsView, AssetView, RackspaceView } from './assets.js';
@@ -303,4 +304,3 @@ export default class SocratesApp extends React.Component {
   }
 }
 
-ReactDOM.render(<SocratesApp />, document.getElementById('socrates_app'));

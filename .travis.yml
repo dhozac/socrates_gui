@@ -19,14 +19,14 @@ before_script:
 - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 - sudo apt install -y nodejs xvfb
 # Install JS dependencies
-- "(cd socrates_gui && npm install)"
-- export PATH=$PWD/socrates_gui/node_modules/.bin:$PWD:$PATH
+- python setup.py sdist
 - export XDG_RUNTIME_DIR=$PWD/.xdg
 - mkdir $PWD/.xdg
 env:
 - HANDLE_COVERAGE=coveralls
 script: xvfb-run -a tox
 deploy:
+  skip_cleanup: true
   provider: pypi
   username: dhozac
   password:

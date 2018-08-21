@@ -68,7 +68,7 @@ class AssetManagementRedirectView(RethinkAPIMixin, GenericAPIView):
         return Response(status=status.HTTP_302_FOUND, headers={'Location': 'https://' + slug + '.' + settings.SOCRATES_OOB_DOMAIN})
 
 class ReactView(TemplateView):
-    template_name = 'app.html'
+    template_name = 'index.html'
 
 class ReQLView(RethinkAPIMixin, APIView):
     permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)

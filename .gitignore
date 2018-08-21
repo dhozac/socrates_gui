@@ -1,2 +1,31 @@
+build
 *.pyc
 *.pyo
+
+# React files
+# dependencies
+react/node_modules
+
+# testing
+react/coverage
+
+# production
+react/build
+
+# misc
+react/.DS_Store
+react/.env.local
+react/.env.development.local
+react/.env.test.local
+react/.env.production.local
+
+react/npm-debug.log*
+react/yarn-debug.log*
+react/yarn-error.log*
+
+socrates_gui/static/css/main.*.css
+socrates_gui/static/css/main.*.css.map
+socrates_gui/static/js/main.*.js
+socrates_gui/static/js/main.*.js.map
+socrates_gui/static/media/*
+socrates_gui/templates/index.html

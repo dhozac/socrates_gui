@@ -1,0 +1,38 @@
+{
+  "name": "socrates_gui",
+  "version": "2.0.0",
+  "description": "Source of configuration, racks, and totally every system",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "cookie": "^0.3.1",
+    "diff": "^3.4.0",
+    "filesize": "^3.6.1",
+    "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.2.1",
+    "netaddr": "^1.1.0",
+    "plotly.js": "1.31.2",
+    "react": "^16.4.2",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.4.2",
+    "react-plotlyjs": "0.4.4",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "react-sortable-hoc": "^0.6.8",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhozac/socrates_gui.git"
+  },
+  "author": "Klarna Bank AB IT Operations Core Services",
+  "license": "Apache-2.0"
+}
