@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import fetch from 'isomorphic-fetch';
 import { Addr } from 'netaddr';
 import { parse } from 'cookie';

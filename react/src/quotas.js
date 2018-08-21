@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import React from 'react';
 
 class Quota extends React.Component {

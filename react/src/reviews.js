@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import React from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
 import ReactDiff from './diff.js';

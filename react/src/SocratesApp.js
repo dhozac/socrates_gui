@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Button } from 'react-bootstrap';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { connect, Provider } from 'react-redux';
@@ -72,7 +70,7 @@ class BaseView extends React.Component {
     menu.push(<li key="menu_stats"><Link to="/gui/stats">Stats</Link></li>);
     menu.push(<li key="menu_bonk"><Link to="/gui/bonk">Bonk</Link></li>);
     var menu_right = [
-      (<li key="menu_right_refresh"><a href="#" onClick={this.onRefresh.bind(this)}>Refresh</a></li>),
+      (<li key="menu_right_refresh"><Button onClick={this.onRefresh.bind(this)} bsStyle="link">Refresh</Button></li>),
     ];
     return (
       <div>

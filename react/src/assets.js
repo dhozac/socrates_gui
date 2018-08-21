@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import React from 'react';
 import { Tabs, Tab, FormGroup, InputGroup, FormControl, DropdownButton, MenuItem, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
 import { Addr } from 'netaddr';

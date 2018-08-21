@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import React from 'react';
 import createPlotlyComponent from 'react-plotlyjs';
 import Plotly from 'plotly.js/dist/plotly-basic.min';

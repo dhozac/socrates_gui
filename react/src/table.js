@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 import React from 'react';
 import { Pagination, Modal, Button, Glyphicon } from 'react-bootstrap';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
