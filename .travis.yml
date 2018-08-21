@@ -20,7 +20,7 @@ before_script:
 - sudo apt install -y nodejs xvfb
 # Install JS dependencies
 - python setup.py sdist
-- export XDG_RUNTIME_DIR=$PWD/.xdg
+- export PATH=$PWD:$PATH XDG_RUNTIME_DIR=$PWD/.xdg
 - mkdir $PWD/.xdg
 env:
 - HANDLE_COVERAGE=coveralls
