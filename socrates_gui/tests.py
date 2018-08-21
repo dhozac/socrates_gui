@@ -42,4 +42,4 @@ class SeleniumTests(StaticLiveServerTestCase):
 
     def test_page_load(self):
         self.selenium.get('%s%s' % (self.live_server_url, reverse('socrates_gui:home_view')))
-        app = self.selenium.find_element_by_id("socrates_app")
+        app = self.selenium.find_element_by_id("root")
