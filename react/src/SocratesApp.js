@@ -40,7 +40,6 @@ class HomeView extends React.Component {
     return (
       <div>
         <p>Socrates, providing information that is consistent with reality.</p>
-        <a href="https://confluence.internal.machines/display/teamitopscs/Socrates">Read the docs!</a>
       </div>
     );
   }
