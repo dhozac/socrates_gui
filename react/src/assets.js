@@ -78,13 +78,23 @@ export class AssetView extends React.Component {
                             <div class="col-sm-8">{this.asset.cpu.length} x {this.asset.cpu[0]}</div>
                         </div>
                     );
-                if (typeof this.asset.ram !== "undefined")
+                if (typeof this.asset.ram !== "undefined") {
+                    var extra = "";
+                    if (this.asset.ram.hasOwnProperty("slots")) {
+                        var populated_slots = Object.values(this.asset.ram.slots)
+                            .map((slot) => (slot.size || 0))
+                            .reduce(function (slots_by_size, value) { slots_by_size[value] = (slots_by_size[value] || 0) + 1; return slots_by_size; }, {});
+                        Object.keys(populated_slots).sort((a, b) => { return b - a; }).forEach((size) => {
+                             extra += ", " + populated_slots[size] + " x " + (size !== "0" ? filesize(size) : "empty");
+                        });
+                    }
                     data.push(
                         <div class="row" key="ram">
                             <div class="col-sm-4">RAM</div>
-                            <div class="col-sm-8">{filesize(this.asset.ram.total)}</div>
+                            <div class="col-sm-8">{filesize(this.asset.ram.total)}{extra}</div>
                         </div>
                     );
+                }
             }
             return (
                 <Tabs id="asset_tabs" activeKey={this.state.key} onSelect={this.handleSelect.bind(this)}>
