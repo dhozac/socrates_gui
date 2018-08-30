@@ -40,6 +40,20 @@ class SeleniumTests(StaticLiveServerTestCase):
         cls.selenium.quit()
         super(SeleniumTests, cls).tearDownClass()
 
+    def create_user(self, username, password):
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        return User.objects.create(username=username, password=make_password(password), email="%s@example.com" % username)
+
+    def login(self, username='root', password='toor'):
+        self.create_user(username, password)
+        self.selenium.get('%s%s' % (self.live_server_url, reverse('login')))
+        username = self.selenium.find_element_by_name("username")
+        username.send_keys(username)
+        password = self.selenium.find_element_by_name("password")
+        password.send_keys(password)
+
     def test_page_load(self):
+        self.login()
         self.selenium.get('%s%s' % (self.live_server_url, reverse('socrates_gui:home_view')))
         app = self.selenium.find_element_by_id("root")
