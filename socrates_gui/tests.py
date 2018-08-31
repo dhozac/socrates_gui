@@ -16,6 +16,7 @@ from django.conf import settings
 from django.core import management
 from django.test import override_settings
 from django.urls import reverse
+from django.contrib.auth.hashers import make_password
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 import rethinkdb as r
