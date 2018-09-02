@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import urllib
 from django.conf import settings
 from django.core import management
 from django.test import override_settings
@@ -46,9 +47,9 @@ class SeleniumTests(StaticLiveServerTestCase):
         User = get_user_model()
         return User.objects.create(username=username, password=make_password(password), email="%s@example.com" % username)
 
-    def login(self, username='root', password='toor'):
+    def login(self, url, username='root', password='toor'):
         self.create_user(username, password)
-        self.selenium.get('%s%s' % (self.live_server_url, reverse('rest_framework:login')))
+        self.selenium.get('%s%s?%s' % (self.live_server_url, reverse('rest_framework:login'), urllib.urlencode({'next': url})))
         username_field = self.selenium.find_element_by_name("username")
         username_field.send_keys(username)
         password_field = self.selenium.find_element_by_name("password")
@@ -56,6 +57,5 @@ class SeleniumTests(StaticLiveServerTestCase):
         self.selenium.find_element_by_name("submit").click()
 
     def test_page_load(self):
-        self.login()
-        self.selenium.get('%s%s' % (self.live_server_url, reverse('socrates_gui:home_view')))
+        self.login('%s%s' % (self.live_server_url, reverse('socrates_gui:home_view')))
         app = self.selenium.find_element_by_id("root")
