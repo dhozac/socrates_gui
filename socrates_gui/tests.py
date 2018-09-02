@@ -48,7 +48,7 @@ class SeleniumTests(StaticLiveServerTestCase):
 
     def login(self, username='root', password='toor'):
         self.create_user(username, password)
-        self.selenium.get('%s%s' % (self.live_server_url, reverse('login')))
+        self.selenium.get('%s%s' % (self.live_server_url, reverse('rest_framework:login')))
         username = self.selenium.find_element_by_name("username")
         username.send_keys(username)
         password = self.selenium.find_element_by_name("password")
