@@ -18,8 +18,6 @@ before_script:
 # Install node
 - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 - sudo apt install -y nodejs xvfb
-# Install JS dependencies
-- python setup.py sdist
 - export PATH=$PWD:$PATH XDG_RUNTIME_DIR=$PWD/.xdg
 - mkdir $PWD/.xdg
 env:
