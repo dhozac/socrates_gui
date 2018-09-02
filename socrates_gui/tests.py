@@ -53,6 +53,7 @@ class SeleniumTests(StaticLiveServerTestCase):
         username_field.send_keys(username)
         password_field = self.selenium.find_element_by_name("password")
         password_field.send_keys(password)
+        self.selenium.find_element_by_name("submit").click()
 
     def test_page_load(self):
         self.login()
