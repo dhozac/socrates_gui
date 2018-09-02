@@ -431,14 +431,35 @@ function range(start, stop, step) {
     return ret;
 }
 
+function asset_label(asset) {
+    if (asset.state === "in-use" && asset.hasOwnProperty("provision"))
+        return asset.provision.hostname;
+    else if (asset.hasOwnProperty("network"))
+        return asset.network.device;
+    else if (asset.hasOwnProperty("switch"))
+        return asset.switch.domain;
+    else
+        return asset.service_tag;
+}
+
 class Asset extends React.Component {
     render() {
-        var label = this.props.asset.service_tag;
-        if (this.props.asset.state === "in-use" && this.props.asset.hasOwnProperty("provision"))
-            label = this.props.asset.provision.hostname;
+        var children = this.props.assets.filter((asset) => {
+            return asset.parent === this.props.asset.service_tag;
+        })
+        .sort((a, b) => {
+            if (typeof a.parent_position !== "undefined" && typeof b.parent_position !== "undefined")
+                return a.parent_position[0] - b.parent_position[0];
+            else
+                return a.service_tag.localeCompare(b.service_tag);
+        })
+        .map((asset) => {
+            return (<Asset key={asset.service_tag} asset={asset} assets={this.props.assets} user={this.props.user} />);
+        });
         return (
             <div>
-                <Link to={"/gui/asset/" + encodeURIComponent(this.props.asset.service_tag)} className="rackspace_label">{label}</Link>
+                <Link to={"/gui/asset/" + encodeURIComponent(this.props.asset.service_tag)} className="rackspace_label">{asset_label(this.props.asset)}</Link>
+                {children}
             </div>
         );
     }
@@ -461,7 +482,7 @@ class Rack extends React.Component {
                 if (position === top_pos) {
                     columns.push(
                         <td key={asset.service_tag} rowSpan={top_pos - bottom_pos + 1} className={"rackspace_asset rackspace_" + asset.asset_type}>
-                            <Asset asset={asset} user={this.props.user} />
+                            <Asset asset={asset} assets={this.props.assets} user={this.props.user} />
                         </td>
                     );
                 }
