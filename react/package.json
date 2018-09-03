@@ -34,5 +34,6 @@
     "url": "https://github.com/dhozac/socrates_gui.git"
   },
   "author": "Klarna Bank AB IT Operations Core Services",
+  "proxy": "http://localhost:8000",
   "license": "Apache-2.0"
 }
