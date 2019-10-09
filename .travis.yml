@@ -17,8 +17,8 @@ before_script:
 - sudo bash /etc/init.d/rethinkdb start
 - while ! nc -z 127.0.0.1 28015; do sleep 1; done
 # Install geckodriver
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
-- tar -xzf geckodriver-v0.20.0-linux64.tar.gz
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
+- tar -xzf geckodriver-v0.25.0-linux64.tar.gz
 # Install node
 - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 - sudo apt install -y nodejs xvfb
