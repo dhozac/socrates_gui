@@ -14,6 +14,7 @@
 
 from django.conf.urls import include, url
 from socrates_gui.views import *
+app_name = 'socrates_gui'
 urlpatterns = [
     url(r'^asset/(?P<slug>[A-Za-z0-9 -]+?)/console/?$', AssetConsoleView.as_view(), name='asset_console'),
     url(r'^asset/(?P<slug>[A-Za-z0-9 -]+?)/management/?$', AssetManagementRedirectView.as_view(), name='asset_mgmt_redirect'),

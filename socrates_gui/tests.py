@@ -22,6 +22,11 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 import rethinkdb as r
 
+try:
+    from urllib.parse import urlencode
+except ImportError:
+    from urllib import urlencode
+
 class SeleniumTests(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
@@ -49,7 +54,7 @@ class SeleniumTests(StaticLiveServerTestCase):
 
     def login(self, url, username='root', password='toor'):
         self.create_user(username, password)
-        self.selenium.get('%s%s?%s' % (self.live_server_url, reverse('rest_framework:login'), urllib.urlencode({'next': url})))
+        self.selenium.get('%s%s?%s' % (self.live_server_url, reverse('rest_framework:login'), urlencode({'next': url})))
         username_field = self.selenium.find_element_by_name("username")
         username_field.send_keys(username)
         password_field = self.selenium.find_element_by_name("password")
