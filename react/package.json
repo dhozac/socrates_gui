@@ -1,6 +1,6 @@
 {
   "name": "socrates_gui",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Source of configuration, racks, and totally every system",
   "private": true,
   "dependencies": {
