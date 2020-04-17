@@ -43,7 +43,7 @@ export class AssetView extends React.Component {
               .then((power) => this.setState({power: power ? power['power_state'] : "Unknown"}));
     }
     render() {
-        this.asset = this.props.assets.filter((asset) => { return asset.service_tag === this.props.match.params.service_tag; })[0];
+        this.asset = this.props.assets.filter((asset) => { return asset.service_tag === decodeURIComponent(this.props.match.params.service_tag); })[0];
         var extraProps = {
             asset: this.asset,
         };
@@ -51,7 +51,7 @@ export class AssetView extends React.Component {
             if (this.props.assets.length > 0)
                 return (
                     <Alert bsStyle="danger">
-                        <p>The asset with service tag {this.props.match.params.service_tag} was not found.</p>
+                        <p>The asset with service tag {decodeURIComponent(this.props.match.params.service_tag)} was not found.</p>
                     </Alert>
                 );
             else
