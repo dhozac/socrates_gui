@@ -15,16 +15,17 @@
  */
 
 import React from 'react';
+import { Panel } from 'react-bootstrap';
 import { fetchAPI } from './actions.js';
 
 class Task extends React.Component {
     render() {
         var ack_state = null;
-        var task = null;
         var task_name = "Unknown";
         var service_tag = null;
         var asset_id = null;
         var server = "N/A";
+        var payload = null;
         if (this.props.task.hasOwnProperty("ops_acked") && this.props.task.ops_acked)
             ack_state = (<div>Acked</div>);
         else
@@ -35,15 +36,15 @@ class Task extends React.Component {
                 </div>
             );
         if (this.props.task.task.hasOwnProperty("payload")) {
-            task = JSON.parse(atob(this.props.task.task.payload.body));
+            payload = JSON.parse(atob(this.props.task.task.payload.body));
             task_name = this.props.task.task.payload.headers.task;
-            if (task[0].length > 0) {
-                if (task[0][0].hasOwnProperty("service_tag"))
-                    service_tag = task[0][0].service_tag;
-                if (task[0][0].hasOwnProperty("id"))
-                    asset_id = task[0][0].id;
+            if (payload[0].length > 0) {
+                if (payload[0][0].hasOwnProperty("service_tag"))
+                    service_tag = payload[0][0].service_tag;
+                if (payload[0][0].hasOwnProperty("id"))
+                    asset_id = payload[0][0].id;
                 if (task_name === "socrates_api.tasks.extract_asset_from_raw")
-                    service_tag = task[0][0];
+                    service_tag = payload[0][0];
             }
             server = this.props.task.task.claimed_by[0];
         }
@@ -57,8 +58,22 @@ class Task extends React.Component {
                     <strong>Service tag</strong>: {service_tag}<br />
                     <strong>Asset ID</strong>: {asset_id}<br />
                     <strong>Result</strong>: {this.getResult()}<br />
-                    <strong>Traceback</strong><br />
-                    <pre>{this.props.task.traceback}</pre>
+                    <Panel>
+                        <Panel.Heading>
+                            <Panel.Title toggle>Traceback</Panel.Title>
+                        </Panel.Heading>
+                        <Panel.Body collapsible>
+                            <pre>{this.props.task.traceback}</pre>
+                        </Panel.Body>
+                    </Panel>
+                    <Panel>
+                        <Panel.Heading>
+                            <Panel.Title toggle>Task</Panel.Title>
+                        </Panel.Heading>
+                        <Panel.Body collapsible>
+                            <pre>{JSON.stringify(payload, null, 2)}</pre>
+                        </Panel.Body>
+                    </Panel>
                     {ack_state}
                 </div>
             </li>
